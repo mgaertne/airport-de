@@ -8,6 +8,10 @@ class ParkCalcPage
   end
   
   def select(park_platz)
+    selector = @driver.find_element(:name => 'ParkPlatz')
+    selector.find_elements(:tag_name => 'option').find do |option|
+      option.text == park_platz
+    end.click
   end
   
   def enter_park_dauer(dauer)
