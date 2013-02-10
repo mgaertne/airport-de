@@ -13,4 +13,8 @@ class ParkCalcPage
   def enter_park_dauer(dauer)
   end
   
+  def park_gebuehren
+    return nil
+  end
+  
 end

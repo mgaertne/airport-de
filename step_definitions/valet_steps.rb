@@ -6,5 +6,6 @@ Wenn /^ich mein Auto auf dem Valet Parking-Parkplatz für (.*) parke$/ do |dauer
 end
 
 Dann /^muss ich (.*) bezahlen$/ do |gebuehr|
+  $parkclac.park_gebuehren.should == gebuehr
   pending
 end
