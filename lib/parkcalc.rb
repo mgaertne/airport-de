@@ -46,7 +46,9 @@ class ParkCalcPage
   end
   
   def park_gebuehren
-    return nil
+    @driver.find_element(:name =>'Submit').click
+    gebuehren_element = @driver.find_element(:xpath => "//tr[td/div[@class='SubHead'] = 'voraussichtliche Parkgebühren']/td/span/b").text
+    return gebuehren_element
   end
   
 end
