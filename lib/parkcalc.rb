@@ -46,9 +46,16 @@ class ParkCalcPage
   end
   
   def park_gebuehren
+    berechne_park_gebuehren
+    park_gebuehren_von_der_Seite
+  end
+  
+  def berechne_park_gebuehren
     @driver.find_element(:name =>'Submit').click
-    gebuehren_element = @driver.find_element(:xpath => "//tr[td/div[@class='SubHead'] = 'voraussichtliche Parkgebühren']/td/span/b").text
-    return gebuehren_element
+  end
+  
+  def park_gebuehren_von_der_Seite
+    @driver.find_element(:xpath => "//tr[td/div[@class='SubHead'] = 'voraussichtliche Parkgebühren']/td/span/b").text
   end
   
 end
