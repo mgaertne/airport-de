@@ -24,6 +24,10 @@ class ParkCalcPage
     enter_into_field :name, 'StartDatum', startDatum
     enter_into_field :name, 'StartZeit', startZeit
     @driver.find_element(:xpath, "//input[@name='StartZeitampm' and @value='%s']" % startZeitampm).click
+
+    enter_into_field :name, 'AbfahrDatum', abfahrDatum
+    enter_into_field :name, 'AbfahrZeit', abfahrZeit
+    @driver.find_element(:xpath, "//input[@name='AbfahrZeitampm' and @value='%s']" % abfahrZeitampm).click
   end
   
   def enter_into_field(wie, was, wert)
