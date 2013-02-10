@@ -1,6 +1,6 @@
 # encoding: utf-8
-Wenn /^ich mein Auto auf dem Valet Parking-Parkplatz für (.*) parke$/ do |dauer|
-  $parkcalc.select('Valet Parking')
+Wenn /^ich mein Auto auf dem (.*)-Parkplatz für (.*) parke$/ do |parkplatz, dauer|
+  $parkcalc.select(parkplatz)
   $parkcalc.enter_park_dauer(dauer)
 end
 
