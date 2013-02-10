@@ -21,13 +21,14 @@ class ParkCalcPage
   
   def enter_park_dauer(dauer)
     startDatum, startZeit, startZeitampm, abfahrDatum, abfahrZeit, abfahrZeitampm = @@ParkdauerMap[dauer]
-    enter_into_field :name, 'StartDatum', startDatum
-    enter_into_field :name, 'StartZeit', startZeit
-    @driver.find_element(:xpath, "//input[@name='StartZeitampm' and @value='%s']" % startZeitampm).click
-
-    enter_into_field :name, 'AbfahrDatum', abfahrDatum
-    enter_into_field :name, 'AbfahrZeit', abfahrZeit
-    @driver.find_element(:xpath, "//input[@name='AbfahrZeitampm' and @value='%s']" % abfahrZeitampm).click
+    fuelle_Datum_und_Uhrzeit_aus_fuer 'Start', startDatum, startZeit, startZeitampm
+    fuelle_Datum_und_Uhrzeit_aus_fuer 'Abfahr', abfahrDatum, abfahrZeit, abfahrZeitampm
+  end
+  
+  def fuelle_Datum_und_Uhrzeit_aus_fuer(formularPrefix, datum, uhrzeit, ampm)
+    enter_into_field :name, "%sDatum" % formularPrefix, datum
+    enter_into_field :name, "%sZeit" % formularPrefix, uhrzeit
+    @driver.find_element(:xpath, "//input[@name='%sZeitampm' and @value='%s']" % [ formularPrefix, ampm ]).click
   end
   
   def enter_into_field(wie, was, wert)
