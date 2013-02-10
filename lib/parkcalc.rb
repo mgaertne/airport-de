@@ -9,6 +9,9 @@ class ParkCalcPage
   @@zeitTemplate = "%sZeit"
   @@amPMRadioButtonTemplate = "//input[@name='%sZeitampm' and @value='%s']"
   
+  @@berechneButtonIdentifier = 'Submit'
+  @@gebuehrenElementLocation = "//tr[td/div[@class='SubHead'] = 'voraussichtliche Parkgebühren']/td/span/b"
+  
   @@ParkdauerMap = {
     '30 Minuten' => ['05/04/2010', '12:00', 'AM', '05/04/2010', '12:30', 'AM']
   }
@@ -40,7 +43,7 @@ class ParkCalcPage
   end
   
   def enter_into_field(wie, was, wert)
-    element = @driver.find_element(wie, was)
+    element = @driver.find_element wie, was
     element.clear
     element.send_keys(wert)
   end
@@ -51,11 +54,11 @@ class ParkCalcPage
   end
   
   def berechne_park_gebuehren
-    @driver.find_element(:name =>'Submit').click
+    @driver.find_element(:name => @@berechneButtonIdentifier).click
   end
   
   def park_gebuehren_von_der_Seite
-    @driver.find_element(:xpath => "//tr[td/div[@class='SubHead'] = 'voraussichtliche Parkgebühren']/td/span/b").text
+    @driver.find_element(:xpath => @@gebuehrenElementLocation).text
   end
   
 end
